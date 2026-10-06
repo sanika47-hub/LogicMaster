@@ -1,0 +1,12 @@
+{
+  "name": "logic-app",
+  "version": "1.0.0",
+  "description": "Propositional logic app - parser (Member 1) and truth table engine (Member 2)",
+  "main": "parser.js",
+  "scripts": {
+    "test": "node parser.test.js && node truthTable.test.js",
+    "test:parser": "node parser.test.js",
+    "test:truthtable": "node truthTable.test.js"
+  },
+  "license": "MIT"
+}
