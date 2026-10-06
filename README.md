@@ -1,83 +1,192 @@
-# LogicMaster — Member 4 Proof Assistant
+# LogicMaster
 
-## Files
+## Gamified Logic Learning and Automated Assessment Platform
 
-- `proof.js` — main Proof Assistant engine.
-- `proofChallenges.js` — progressive proof challenge data.
-- `proof.test.js` — unit tests for the Proof Assistant.
+LogicMaster is a gamified web-based application designed to help students improve their logical reasoning, problem-solving, and programming logic skills through interactive challenges.
 
-## Main workflow
+The platform combines learning with gamification by allowing users to solve logic-based problems, receive automated feedback, and track their progress.
 
-`premises → available statements → student step → rule verification → new statement → goal`
+## Features
 
-## Supported rules
+* Gamified learning through interactive logic-based challenges
+* Multiple types of logical and programming problems
+* Challenges with varying difficulty levels
+* Automated evaluation of user submissions
+* Immediate feedback on submitted solutions
+* Score and progress tracking
+* Modular and extensible project architecture
+* Automated testing for core modules
 
-- Modus Ponens (`MP`)
-- Modus Tollens (`MT`)
-- Hypothetical Syllogism (`HS`)
-- Disjunctive Syllogism (`DS`)
-- Simplification (`SIMP`)
-- Conjunction (`CONJ`)
+## Technology Stack
 
-## Important functions
+### Frontend
 
-### `verifyProofStep(statements, conclusion, rule, fromLines)`
+* HTML
+* CSS
+* JavaScript
+* Node.js-based tooling
 
-Checks whether a single student step is mathematically valid.
+### Backend
 
-Example:
+* Node.js
+* Express.js
 
-```js
-verifyProofStep(
-  ["P → Q", "P"],
-  "Q",
-  "MP",
-  [1, 2]
-);
+### Testing
+
+* Jest
+
+### Development Tools
+
+* Visual Studio Code
+* Git
+* GitHub
+* npm
+
+## Project Structure
+
+```text
+LogicMaster/
+│
+├── backend/
+│   ├── server.js
+│   └── ...
+│
+├── package/
+│   └── ...
+│
+├── proof.js
+├── proof.test.js
+├── proofChallenges.js
+│
+├── parser.js
+├── parser.test.js
+│
+├── package.json
+├── package-lock.json
+├── .gitignore
+└── README.md
 ```
 
-### `generateProof(premises, goal)`
+The exact structure may vary depending on the modules implemented by different team members.
 
-Automatically searches for a proof using the supported rules and returns an ordered list of steps.
+## Installation and Setup
 
-### `verifyProof(premises, goal, studentSteps)`
-
-Checks a student's complete proof one step at a time.
-
-### `createProofSession(premises, goal)` / `addStudentStep(...)`
-
-Useful for an interactive UI where the user submits one proof step at a time.
-
-## Integration with Member 5
-
-Member 5 can import the module and display the returned objects directly in the proof screen.
-
-```js
-import { createProofSession, addStudentStep, isGoalReached } from "./proof.js";
-
-const session = createProofSession(["P → Q", "P"], "Q");
-const result = addStudentStep(session, "Q", "MP", [1, 2]);
-
-console.log(result.message);
-console.log(isGoalReached(session));
-```
-
-## Integration with Member 3
-
-The Proof Assistant accepts the same core inference-rule concepts as Member 3. If Member 3 exposes a different function signature, the integration member can use this module's returned `rule`, `valid`, `message`, `premisesUsed`, and `explanation` fields as the adapter boundary.
-
-## Test
-
-Because these files use ES modules, add this to `package.json`:
-
-```json
-{
-  "type": "module"
-}
-```
-
-Then run:
+### 1. Clone the Repository
 
 ```bash
-node --test proof.test.js
+git clone https://github.com/sanika47-hub/LogicMaster.git
 ```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd LogicMaster
+```
+
+### 3. Install Dependencies
+
+If the project uses the root `package.json`:
+
+```bash
+npm install
+```
+
+If the backend contains a separate `package.json`:
+
+```bash
+cd backend
+npm install
+```
+
+## Running the Project
+
+Start the application using:
+
+```bash
+npm start
+```
+
+Alternatively, if the backend is configured to run directly:
+
+```bash
+node server.js
+```
+
+The application can then be accessed through the local server address displayed in the terminal.
+
+## Running Tests
+
+The project contains automated tests for important modules.
+
+Run all tests using:
+
+```bash
+npm test
+```
+
+To run individual test files:
+
+```bash
+npm test -- parser.test.js
+```
+
+```bash
+npm test -- proof.test.js
+```
+
+## Project Objective
+
+The primary objective of LogicMaster is to make logic and problem-solving practice more interactive and engaging.
+
+Traditional learning methods often rely on static exercises and manual evaluation. LogicMaster provides an interactive approach in which learners can:
+
+1. Select a challenge.
+2. Attempt the problem.
+3. Submit their solution.
+4. Receive automated evaluation.
+5. Analyze their result.
+6. Progress toward more challenging problems.
+
+## Core Modules
+
+### Parser Module
+
+The parser module processes and interprets the required input or logical expressions used by the application.
+
+### Proof Module
+
+The proof module handles proof-related functionality and validates solutions according to the defined rules.
+
+### Challenge Module
+
+The challenge module provides logic problems for users to solve and forms an important part of the gamified learning experience.
+
+### Backend Module
+
+The backend manages server-side functionality and provides the services required by the application.
+
+## Future Scope
+
+The project can be further enhanced with:
+
+* User authentication and profiles
+* Leaderboards and rankings
+* Difficulty-based progression
+* Badges and achievement systems
+* Daily challenges
+* Personalized challenge recommendations
+* Expanded challenge database
+* Detailed performance analytics
+* Additional automated evaluation mechanisms
+* Responsive mobile interface
+
+## Project Information
+
+**Project:** LogicMaster
+**Project Type:** Gamified Application / Automated System Implementation
+**Purpose:** Academic Project
+**Course:** ISE-2
+
+## License
+
+This project has been developed for academic purposes.
